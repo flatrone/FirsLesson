@@ -1,4 +1,4 @@
-let numberOfFilms = prompt('Сколько фильмов ты посмотрел? ');
+let numberOfFilms = +prompt('Сколько фильмов ты посмотрел? ');
 
 let persnalMovieDB = {
     count: numberOfFilms,
@@ -8,10 +8,25 @@ let persnalMovieDB = {
     privat: false
 };
 
-let movie = prompt('Один из поледних просмотренных  фильмов? ');
-let score = prompt('На сколько оцените его? ');
-let movie1 = prompt('Один из поледних просмотренных  фильмов? ');
-let score1 = prompt('На сколько оцените его? ');
+for (let i = 0; i < 2; i++) {
+    let a = prompt('Один из поледних просмотренных  фильмов? '),
+        b = prompt('На сколько оцените его? ');
+    
+    if (a != null && a.length < 50 && b != null && b != '') {
+        persnalMovieDB.movies[a] = b;
+        console.log('gotovo');
+    } else {
+        console.log('net');
+        i--;
+    }
+}
 
-persnalMovieDB.movies[movie] = score;
-persnalMovieDB.movies[movie1] = score1;
+if (persnalMovieDB.count < 10) {
+    alert('Мало смотришь');
+} else if (persnalMovieDB.count >= 10 && persnalMovieDB.count <= 30) {
+    alert('Молодец');
+} else if (persnalMovieDB.count > 30) {
+    alert('Киноман');
+} else {
+    alert('Ошибка');
+}
